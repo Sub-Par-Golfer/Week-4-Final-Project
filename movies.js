@@ -30,28 +30,65 @@ function toggleModal() {
     document.body.classList += ' modal--open'
 }
 
+const postListEl = document.querySelector('.post-list')
+const Title = localStorage.getItem("Title")
 
-const movieListEl = document.querySelector('.movie-container')
-const title = ('Fast')
+
 async function onSearchChange(event) {
-    const title = event.target.value
-    movieSearch(title)
+    const Title = event.target.value
+   renderPosts(Title)
+}
+   
+
+async function renderPosts(Title) {
+    const posts = await fetch(`https://www.omdbapi.com/?apikey=67b7f307&s=${Title}`)
+    const postsData = await posts.json()
+    postListEl.innerHTML = postsData.map(post => postHTML(post)).join('')
 }
 
+    function postHTML(post) {
+        return `
+        <div class="post">
+        <div class="post__title">
+          '${response.Title}'
+        </div>
+        <p class="post__body">
+          '${response.Year}'
+        </p>
+      </div>
+  `
+    }
 
-function movieSearch(title){
-    const movieTitle = fetch(`https://www.omdbapi.com/?apikey=67b7f307&s=${title}`)
-    .then((response) => response.json())
-    .then((movieTitle) => Array.from(movieTitle))
-    const moviesHTML = movieTitle.map(post => moviesHTML(post)).join('')
-}
-movieSearch(title)
+renderPosts(Title);
+
+
+// const movieListEl = document.querySelector('.movie-container')
+// const title = ('Fast')
+// async function onSearchChange(event) {
+//     const title = event.target.value
+//     movieSearch(title)
+// }
+
+
+// function movieSearch(title){
+//     const movieTitle = fetch(`https://www.omdbapi.com/?apikey=67b7f307&s=${title}`)
+//     .then((response) => response.json())
+//     .then((movieTitle) => Array.from(movieTitle))
+//     const moviesHTML = movieTitle.map(post => moviesHTML(post)).join('')
+// }
+// movieSearch(title)
+
+// async function movieSearch(title) {
+//     const movies = await fetch(`https://www.omdbapi.com/?apikey=67b7f307&s=${title}`)
+//     const movieData = await movies.json()
+//     movieListEl.innerHTML = movieData.map(movies => moviesHTML(movies)).join('')}
+// movieSearch(title)
 
 // function moviesHTML(title) {
 //     return `
 //     <div class="movie">
 //         <div class="movie__title">
-//             ${movies.title}
+//             ${treeLabelCell.title}
 //         </div>
 //         <p class="movie__info">
 //             ${Year}

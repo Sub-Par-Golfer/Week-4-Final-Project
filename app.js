@@ -30,3 +30,28 @@ function toggleModal() {
     document.body.classList += ' modal--open'
 }
 
+const userListEl = document.querySelector('.user-list');
+
+async function main() {
+    const users = await fetch("https://www.omdbapi.com/?apikey=67b7f307");
+    const usersData = await users.json();
+    userListEl.innerHTML = usersData.map((user) => userHTML(user)).join("")
+}
+
+main();
+
+function showUserPosts(Title) {
+    localStorage.setItem("id", id)
+    window.location.href = `${window.location.origin}/user.html`
+}
+
+function userHTML(user) {
+   return `<div class="user-card" onclick="showUserPosts(${user.Title})">
+    <div class="user-card__container">
+      <h3>${user.name}</h4>
+        <p><b>Email:</b> ${user.email}</p>
+        <p><b>Phone:</b> ${user.phone}</p>
+        <p><b>Website:</b> <a href="https://${user.website}" target="_blank">${user.website}</a></p>
+    </div>
+  </div>`
+}

@@ -1,14 +1,26 @@
 * {
-    background-color: whitesmoke;
+    background-color: none;
     padding: 0;
     margin: 0;
+    border: 0;
+    outline: 0;
+    font-size: 100%;
+    vertical-align: baseline;
+    background: transparent;
     box-sizing: border-box;
     font-family: 'Inter', sans-serif;
 }
 
+
 body {
+    background-image: url(https://wallpapers.com/images/hd/movie-poster-background-jd1c45cjm7vba7gg.jpg);
     max-width: 100vw;
+    max-height: 100vh;
     overflow-x: hidden;
+}
+
+html {
+  height: 100%;
 }
 
 .row {
@@ -23,6 +35,7 @@ body {
     width: 100%;
     max-width: 1200px;
     padding: 0px 24px;
+    
     display: flex;
     justify-content: space-between;
     align-items: center;
@@ -78,6 +91,8 @@ button:active {
 .nav__link--primary {
     border: 3px solid blue;
     border-radius: 35px;
+    box-shadow: 10px 5px 10px grey;
+    border-radius: 40px;
 }
 
 .nav__link--primary:hover {
@@ -107,23 +122,36 @@ figure {
     display: flex;
 }
 
-header {
-    height: calc(100vh - 160px);
+
+nav {
+  background-color: rgb(245, 245, 245, .8);
+  margin-bottom: 20px;
+}
+
+#data,
+header,
+section {
+  /* display: flex; */
+  /* background-color: rgb(245, 245, 245, .8); */
+  height: 100vh - 160px;
+  width: 100vw;
 }
 
 
 .header__container {
-    padding: 12px 24px;
+    padding: 0px 24px;
     width: 100%;
     max-width: 1100px;
     margin: 0 auto;
-    height: 100%;
+    height: 100% - 160px;
     display: flex;
     flex-direction: column;
     justify-content: space-around;
+    
 }
 
 .header__description {
+  background-color: rgb(245, 245, 245, .8);
     display: flex;
     flex-direction: column;
     align-items: center;
@@ -155,7 +183,7 @@ h2 {
     width: 100%;
     max-width: 500px;
 }
-
+textarea,
 input {
     width: 500px;
     height: 56px;
@@ -165,6 +193,8 @@ input {
     font-size: 24px;
     text-align: center;
     margin-bottom: 20px;
+    box-shadow: 10px 10px 10px grey;
+    border-radius: 40px;
 }
 
 .search__btns {
@@ -369,19 +399,147 @@ input {
   }
 
   /* Movies */
-  .movie__title {
-    border: 2px solid red;
-    height: 25vh;
-    margin-bottom: 16px;
-    align-items: center;
-    text-align: center;
-    justify-content: center;
+#filter {
+  background-color: rgb(245, 245, 245, .8);
 }
 
-.movie__info {
+#data {
+  display: flex;
+  height: 100;
+  }
+.post-list {
+    display: flex;
+    flex-direction: row;
     border: 2px solid blue;
-    height: 50vh;
+    height: 100%;
+    width: 100%;
     align-items: center;
     text-align: center;
+    justify-content: space-evenly;
+    flex-wrap: wrap;
+    border-radius: 10px;
+    padding: 10px;
+    box-shadow: 10px 10px 10px grey;
+    background-color: rgb(245, 245, 245, .8);
+}
+
+.post {
+  width: calc(100% / 4);
+  flex-wrap: wrap;
+  margin: 10px;
+  text-align: center;
+  justify-content: center;
+  align-items: center;
+}
+
+.post__title {
+  font-size: 24px;
+  font-weight: 700;
+  margin-bottom: 5px;
+  align-items: center;
+  justify-content: center;
+  height: 60px;
+}
+
+.post__body {
+  height: 100%;
+  font-size: 20px;
+  font-weight: 500;
+  margin-bottom: 10px;
+}
+
+.post__img {
+  display: flex;
+  width: 100%;
+  height: 100%;
+  max-height: 438px;
+  margin-top: 30px;
+  justify-content: center;
+  align-items: center;
+}
+
+.movie__search {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+}
+
+.movie__search--label {
+  background-color: rgb(245, 245, 245, .8);
+  border: 1px solid blue;
+  border-radius: 20px;
+  margin: 5px;
+}
+
+/* Small phones, Tablets, Large Smart Phones */
+@media (max-width: 970px) {
+  
+    /* .post__body {
+      font-size: 14px;
+      font-weight: 700;
+    } */
+  
+     figure {
+      transform: scale(.8);
+      
+    }
+   /* .post__title {
+    transform: scale(.7);
+   } */
+
+  .post {
+    /* transform: scale(.7); */
+    width: 100%;
+  } 
+  
+  
+  
+ 
+  .modal {
+    top: 0;
+    left: 0;
+    transform: none;
+    height: auto;
+    width: 100%;
+    flex-direction: column-reverse;
+    border-radius: 0;
+  }
+  .modal__half {
+    width: 100%;
+  }
+ 
+}
+
+/* Small Phones */
+@media (max-width: 679px) {
+  .post__title {
+    transform: scale(.7);
+  }
+
+  .post__img {
+    transform: scale(.8);
+  }
+
+  .post {
+    transform: scale(.9);
+    margin: 0 auto;
+  }
+
+  input {
+    width: 100%;
+  }
+  
+  .nav__link:first-child {
+    display: none;
+  }
+  .modal__half {
+    padding: 40px;
+  }
+  nav {
+    scale: 75%;
+    align-items: center;
     justify-content: center;
+  }
+
 }

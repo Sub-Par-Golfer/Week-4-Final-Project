@@ -31,14 +31,14 @@
             <div class="row">
                 <div class="nav__container">
                     <figure>
-                    <i class="fa-solid fa-film logo__img"><span class="logo__name">OMDb Movie Search</span></i>
+                    <i class="fa-solid fa-film logo__img"><span class="logo__name">OMDb Movie & Game Search</span></i>
                     </figure>
                     <div class="nav__links">
                     <ul class="nav__list">
                         <li class="nav__link click">
                             <a href="">Home</a></li>
                         <li class="nav__link click">
-                            <a href="http://127.0.0.1:5500/movies.html" target="_blank">Search Movies</a></li>
+                            <a href="http://127.0.0.1:5500/movies.html" target="_blank">Search Titles</a></li>
                         <li class="nav__link nav__link--primary click" onclick="toggleModal()">
                             <a href="#">Contact</a></li>
                     </ul>
@@ -49,10 +49,10 @@
             <div class="modal__half modal__about">
               <h3 class="modal__title">Thank you for visiting</h3>
               <h4 class="modal__sub-title modal__sub-title--about">
-                OMDb Movie Search
+                OMDb Movie & Game Search
               </h4>
               <p class="modal__para">
-                If you've nejoyed the ability to search for movies and want to say thank you please fill out the form next to this. If you have requests or changes you would like seen on this page please drop me a message and I'll be sure to take a look at making those changes. 
+                If you've enjoyed the ability to search for movies and want to say thank you please fill out the form next to this. If you have requests or changes you would like seen on this page please drop me a message and I'll be sure to take a look at making those changes. 
               </p>
               </div>
               <div class="modal__half modal__contact">
@@ -92,15 +92,13 @@
             <div class="header__container">
               <div class="header__description">
                 <h1 class="header__title">
-                  SEARCH FOR MOVIES
+                  SEARCH FOR MOVIES OR GAMES
                 </h1>
                 <h2>
-                  Find all of the movies you desire with <br class="text--blue">OMDb movie search</br>
+                  Find all of the movies you desire with <br class="text--blue">OMDb movie & game search</br>
                 </h2>
                 <div class="input__with__button">
-                <input type="text" placeholder="Search by title or keyword">
-                <div class="search__btns"><a href="#"><button class="btn click">Browse Movies</button></a>
-                <a href="#"><button class="btn random click">Random Movie</button></a></div>
+                <div class="search__btns"><a href="movies.html"><button class="btn click" onchange="onSearchChange(event)">Browse Titles</button></a>
             </div>
               </div>
               <figure class="header__img--wrapper">

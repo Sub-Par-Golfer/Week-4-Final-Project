@@ -36,30 +36,65 @@ const Title = localStorage.getItem("Title")
 
 async function onSearchChange(event) {
     const Title = event.target.value
-   renderPosts(Title)
+    setTimeout(() =>{
+   renderPosts(Title)}, 1000)
 }
+
    
 
 async function renderPosts(Title) {
-    const posts = await fetch(`https://www.omdbapi.com/?apikey=67b7f307&s=${Title}`)
-    const postsData = await posts.json()
-    postListEl.innerHTML = postsData.map(post => postHTML(post)).join('')
-}
-
-    function postHTML(post) {
-        return `
-        <div class="post">
-        <div class="post__title">
-          '${response.Title}'
+    const posts = await fetch(
+      `https://www.omdbapi.com/?apikey=67b7f307&s=${Title}`
+    );
+    const postsData = await posts.json();
+    postListEl.innerHTML = postsData.Search.map((post) => postHTML(post)).join(
+      ""
+    );
+  }
+  
+  function postHTML(post) {
+    return `
+          <div class="post">
+          <div class="post__title">
+            ${post.Title}
+          </div>
+          <p class="post__body">
+            ${post.Year}
+          </p>
+          <figure class="post__img"><img src="${post.Poster}"</figure>
         </div>
-        <p class="post__body">
-          '${response.Year}'
-        </p>
-      </div>
-  `
-    }
+    `;
+  }
 
-renderPosts(Title);
+  
+
+
+
+// const imgUrl = "${post.Poster}"
+// const img = document.createElement('img');
+// img.src = imgUrl;
+// document.getElementById('').appendChild(img);
+
+// async function renderPosts(Title) {
+//     const posts = await fetch(`https://www.omdbapi.com/?apikey=67b7f307&s=${Title}`)
+//     const postsData = await posts.json()
+//     postListEl.innerHTML = postsData.map(post => postHTML(post)).join('')
+// }
+
+//     function postHTML(post) {
+//         return `
+//         <div class="post">
+//         <div class="post__title">
+//           '${response.Title}'
+//         </div>
+//         <p class="post__body">
+//           '${response.Year}'
+//         </p>
+//       </div>
+//   `
+//     }
+
+// renderPosts(Title);
 
 
 // const movieListEl = document.querySelector('.movie-container')
